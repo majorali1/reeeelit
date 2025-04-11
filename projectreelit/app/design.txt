@@ -1,0 +1,6 @@
+first version of website 
+
+design decisions that might change i think 
+
+no changes to post after created this is 
+a design choice or

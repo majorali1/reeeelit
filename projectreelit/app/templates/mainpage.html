@@ -1,0 +1,49 @@
+
+
+<!--{% load static %}-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Reelit!</title>
+</head>
+<body>
+    
+    <header class="flex">
+        <h1 class="shiny-border">Reelit!</h1>
+        <nav class="navigation-area">        
+           
+            {% if email %}
+            <form action="{% url 'dashboard' %}" method="GET">                                
+                <button type="submit">dashboard</button>                
+            </form>
+           
+            {% endif %}
+            
+            <form action="{% url 'signup' %}" method="GET">
+                <button type="submit">Signup</button>
+            </form>
+            
+        </nav>
+    </header>
+    
+ 
+    
+    {% for post in posts %}
+    <div class="card">
+    {{ post.title }}
+    {{ post.content }}
+    <form action="{% url 'fullpost' id=post.id %}" method="get"><button type="submit">go</button></form>
+    </div>
+    {% endfor %}
+   
+
+    
+
+
+    <footer>this is footer</footer>
+</body>
+</html>

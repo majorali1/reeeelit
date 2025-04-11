@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h6>this is where user will make thier posts to post</h6>
+
+    <form action="{% url 'publishpost' %}" method="POST">
+        {% csrf_token %}
+        <p>title</p><input type="text" name="title">
+
+        <p>content</p><input type="text" name="content">
+        
+        <button type="submit">submit</button>
+    </form>
+    <br>
+
+</body>
+</html>

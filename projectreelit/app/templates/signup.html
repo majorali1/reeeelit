@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>this html wil be used for posting the User account so sign up</p>
+
+    <form action="{% url 'signup' %}" method="POST">
+        
+        {% csrf_token %}
+        
+        <p>name</p><input type="text"  name="name">
+        <p>email</p><input type="email"  name="email">
+        <p>password</p><input type="password" name="password">
+        
+        <button type="submit">submit</button>
+    </form>
+    {{ failed }}
+    {% if nameerror %}
+    {{ nameerror }}
+    {% endif %}
+    {% if emailerror %}
+    {{ emailerror }}
+    {% endif %}
+    {% if passworderror %}
+    {{ passworderror }}
+    {% endif %}
+    <form action="{% url 'getlogin' %}" method="POST">
+        
+        {% csrf_token %}
+        <button type="submit">login</button>
+    </form>
+</body>
+</html>

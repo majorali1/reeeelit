@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{ fullpost.title }}
+    {{ fullpost.content }}
+    {{ fullpost.created_by }}
+    {{ likes }}
+    {{ dislikes }}
+
+    <br>
+    <br>
+    {{ comment.content }}
+    {{ comment.created_at }}
+    {% for comments in comment %}
+        {{ comments.user }}
+        {{ comments.content }}
+        <br>
+    {% endfor %}
+  
+    <br>
+    <form action="{% url 'fullpost' id=fullpost.id %}" method="POST">
+        {% csrf_token %}
+
+        <p>comment</p><input type="text" name="comment">
+        
+        <button type="submit">submit</button>
+
+    </form>
+    <form action="{% url 'likepost' id=fullpost.id %}" method="POST">{% csrf_token %}<button type="submit">like</button></form>
+    <form action="{% url 'dislikepost' id=fullpost.id %}" method="POST">{% csrf_token %}<button type="submit">dislike</button></form>
+    <p>tst</p>
+</body>
+</html>
